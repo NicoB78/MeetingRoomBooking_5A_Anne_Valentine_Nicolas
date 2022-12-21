@@ -1,0 +1,45 @@
+<!-- formulaire add-room -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" >
+        <div class="form-group">
+          <label for="name">
+            Name
+          </label>
+          <input type="text" id="name" class="form-control" name="name" ngModel>
+        </div>
+        <div class="form-group">
+          <label for="capacity">
+            Capacity
+          </label>
+          <input type="text" id="capacity" class="form-control" name="capacity" ngModel>
+        </div>
+        <div class="form-group">
+          <label for="equipment">
+            Equipment
+          </label>
+          <input type="text" id="equipment" class="form-control" name="equipment" ngModel>
+        </div><div class="form-group">
+        <label for="pictures">
+          Picture
+        </label>
+        <!--<input type="text" id="picture" class="form-control" name="picture" ngModel>-->
+
+        <table class="pictures" id="pictures">
+          <tbody>
+          <tr>
+            <td><img class="logo" id="amphi_picture" (click)="imageOnClick('amphi.png')" src="assets/Picture/amphi.png" alt="amphi" width="150" height="90"/></td>
+            <td><img class="logo"  id="room_picture" (click)="imageOnClick('room.jpg')" src="assets/Picture/room.jpg" alt="room" width="150" height="90"/></td>
+            <td><img class="logo" id="computer_picture" (click)="imageOnClick('computer.jpg')"src="assets/Picture/computer.jpg" alt="computer" width="150" height="90"/></td>
+          </tr>
+          </tbody>
+        </table>
+
+
+      </div>
+        <button class="btn btn-primary" type="submit">Ajouter</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+
+<!-- Tableau Angular -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <a class="navbar-brand" [routerLink]="['/add-reservation']">
+    <div class="example-button-row">
+      <button mat-raised-button>Add Reservation</button>
+      <a mat-raised-button href="https://www.google.com/" target="_blank"></a>
+    </div>
+  </a>
+
+<div class="container d-flex flex-column align-items-center justify-content-center">
+  <table class="table table-dark table-striped table-group-divider">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Date</th>
+      <th scope="col">Start</th>
+      <th scope="col">End</th>
+      <th scope="col">Leader id</th>
+      <th scope="col">Room id</th>
+
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let reservation of reservations">
+      <td>{{reservation.id}}</td>
+      <td id="date_reservation{{reservation.id}}">{{DateReservation(reservation.debut,reservation.fin,reservation.id)}}</td>
+      <td id="debut_reservation{{reservation.id}}"></td>
+      <td id="fin_reservation{{reservation.id}}"></td>
+      <td>{{reservation.idLeader}}</td>
+      <td>{{reservation.idRoom}}</td>
+
+      <td><a class="btn btn-danger" (click)="deleteReservation(reservation.id)">Delete</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</nav>

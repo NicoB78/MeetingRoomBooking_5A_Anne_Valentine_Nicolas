@@ -1,0 +1,85 @@
+<label>
+  <h1>Research available room</h1>
+</label>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" >
+  <div class="form-group">
+
+    <table class="filter_tab">
+      <tbody>
+      <tr>
+        <td>Capacity min</td>
+        <td>Day (mandatory)</td>
+        <td>Starting Time</td>
+        <td>Ending Time</td>
+      </tr>
+
+      <tr>
+        <td><input type="text" id="capacity" class="capacity_input" name="capacity" ngModel></td>
+        <td><input type="date" min='2022-04-10' id="date_reservation" name="date_reservation" ngModel></td>
+        <td><input id="starting_time" list="times_s_t" type="time" name="starting_time" ngModel>
+          <datalist id="times_s_t">
+            <option  value="07:00"></option>
+            <option  value="08:00">
+            <option value="09:00">
+            <option value="10:00">
+            <option value="11:00">
+            <option value="12:00">
+            <option value="13:00">
+            <option value="14:00">
+            <option value="15:00">
+            <option value="16:00">
+            <option value="17:00">
+            <option value="18:00">
+            <option value="19:00">
+          </datalist></td>
+        <td><input id="ending_time" list="times_e_t" type="time" name="ending_time" ngModel>
+          <datalist id="times_e_t">
+            <option value="08:00">
+            <option value="09:00">
+            <option value="10:00">
+            <option value="11:00">
+            <option value="12:00">
+            <option value="13:00">
+            <option value="14:00">
+            <option value="15:00">
+            <option value="16:00">
+            <option value="17:00">
+            <option value="18:00">
+            <option value="19:00">
+            <option value="20:00">
+          </datalist></td>
+
+        <td><button class="btn btn-primary" type="submit">Search</button></td>
+      </tr>
+      </tbody>
+    </table>
+
+
+
+
+  </div>
+</form>
+
+<!-- Tableau Angular -->
+<div class="container d-flex flex-column align-items-center justify-content-center">
+  <table class="table table-dark table-striped table-group-divider">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Capacity</th>
+      <th scope="col">Equipment</th>
+      <th scope="col">Button</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let room of roomsFiltered" >
+      <td>{{room.id}}</td>
+      <td>{{room.name}}</td>
+      <td>{{room.capacity}}</td>
+      <td>{{room.equipment}}</td>
+      <td><a class="btn btn-danger" (click)="bookRoom(room)">Book This Room</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

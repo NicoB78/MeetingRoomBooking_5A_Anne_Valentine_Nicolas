@@ -1,0 +1,107 @@
+<div class="form-group">
+  <table class="heading">
+    <tbody>
+    <tr>
+      <td id="date_reservation" text-align="center"></td>
+      <td id="room_chosen" text-align="center">No room chosen</td>
+      <td><img class="logo" id="picture"  src="assets/logo-epf.png" alt="picture" width="250" height="130"/></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<label>
+  <h3> Reservation for this Room this Day</h3>
+</label>
+
+<div class="container d-flex flex-column align-items-center justify-content-center">
+  <table class="table table-dark table-striped table-group-divider">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Date</th>
+      <th scope="col">Start</th>
+      <th scope="col">End</th>
+      <th scope="col">Leader id</th>
+      <th scope="col">Room id</th>
+
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let reservation of resaByDayForTheRoomChosen">
+      <td>{{reservation.id}}</td>
+      <td id="date_reservation{{reservation.id}}">{{DateReservation(reservation.debut,reservation.fin,reservation.id)}}</td>
+      <td id="debut_reservation{{reservation.id}}"></td>
+      <td id="fin_reservation{{reservation.id}}"></td>
+      <td>{{reservation.idLeader}}</td>
+      <td>{{reservation.idRoom}}</td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+<label>
+  <h3> Book your room</h3>
+</label>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" >
+
+  <div class="form-group">
+    <label for="starting_times">
+      Choose your time
+    </label>
+    <td>Start<input id="starting_time" list="starting_times" type="time" name="starting_time" ngModel>
+      <datalist id="starting_times">
+       <option *ngFor="let c of startingTimeListForHTML" [value]="c.value">
+      </datalist></td>
+    <td>End<input id="ending_time" list="ending_times" type="time" name="ending_time" ngModel>
+      <datalist id="ending_times">
+        <option *ngFor="let c of endingTimeListForHTML" [value]="c.value">
+      </datalist></td>
+    <label *ngIf = "isAdmin" for="starting_times">
+      Choose the leader id
+    </label>
+    <td>
+      <input *ngIf = "isAdmin" type="text" id="leader_id" class="form-control" name="leader_id" ngModel>
+    </td>
+  </div>
+
+  <div class="form-group">
+    <label>
+      Members
+    </label>
+    <div class="container d-flex flex-column align-items-center justify-content-center">
+    <table class="table table-dark table-striped table-group-divider">
+      <thead>
+      <tr>
+        <th scope="col">Choose</th>
+        <th scope="col">Id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Mail</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let member of members">
+        <td><input type="checkbox" id="checkbox{{member.id}}" name="{{member.mail}}"></td>
+        <td>{{member.id}}</td>
+        <td>{{member.firstName}}</td>
+        <td>{{member.lastName}}</td>
+        <td>{{member.mail}}</td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+
+  </div>
+
+  <button class="btn btn-primary" id="book" type="submit" >Book This Room</button>
+</form>
+
+

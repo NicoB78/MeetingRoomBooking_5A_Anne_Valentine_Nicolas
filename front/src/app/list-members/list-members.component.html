@@ -1,0 +1,37 @@
+<!-- Tableau Angular -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['/add-member']">
+    <div class="example-button-row">
+      <button mat-raised-button>Add Member</button>
+      <a mat-raised-button href="https://www.google.com/" target="_blank"></a>
+    </div>
+  </a>
+<div class="container d-flex flex-column align-items-center justify-content-center">
+  <table class="table table-dark table-striped table-group-divider">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Mail</th>
+      <th scope="col">Birth Date</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let member of members">
+      <td>{{member.id}}</td>
+      <td>{{member.firstName}}</td>
+      <td>{{member.lastName}}</td>
+      <td>{{member.mail}}</td>
+      <td id="birth_date{{member.id}}">{{Date(member.birthDate,member.id)}}</td>
+      <td><a class="btn btn-danger" (click)="deleteMember(member.id)">Delete</a></td>
+      <td><a class="btn btn-danger" (click)="update(member)">Update</a></td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+</nav>

@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!--condition pour ne pas tout afficher les memes choses dans la navbar-->
+
+
+<!-- fonctions rooms, réservations et membres-->
+  <a *ngIf = "isadmin" class="navbar-brand" [routerLink]="['/list-rooms']">
+    <div class="example-button-row">
+      <button mat-raised-button>Rooms</button>
+      <a mat-raised-button href="https://www.google.com/" target="_blank"></a>
+    </div>
+  </a>
+
+  <a *ngIf = "isadmin" class="navbar-brand" [routerLink]="['/list-members']">
+    <div class="example-button-row">
+      <button mat-raised-button>Members</button>
+      <a mat-raised-button href="https://www.google.com/" target="_blank"></a>
+    </div>
+  </a>
+
+  <a *ngIf = "isadmin" class="navbar-brand" [routerLink]="['/list-reservations']">
+    <div class="example-button-row">
+      <button mat-raised-button>Reservations</button>
+      <a mat-raised-button href="https://www.google.com/" target="_blank"></a>
+    </div>
+  </a>
+
+    <!-- élément de navbar pour espace perso-->
+  <a *ngIf = "isadmin" class="navbar-brand" [routerLink]="['/link-member']"></a>
+
+
+
+  <!--research room en tant que user-->
+  <a *ngIf = "isNotConnexionPage" class="navbar-brand" [routerLink]="['/research-room']">
+    <div class="example-button-row">
+      <button mat-raised-button>Research Room</button>
+      <a mat-raised-button href="https://www.google.com/" target="_blank"></a>
+    </div>
+  </a>
+
+
+  <a *ngIf = "isNotConnexionPage" class="navbar-brand" [routerLink]="['/']">
+    <div class="example-button-row">
+      <button mat-raised-button>Sign out</button>
+      <a mat-raised-button href="https://www.google.com/" target="_blank"></a>
+    </div>
+  </a>
+
+
+</nav>
+
+
+
